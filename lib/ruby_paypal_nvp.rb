@@ -1,3 +1,4 @@
+require 'active_support/all'
 require 'net/http'
 
 require 'ruby_paypal_nvp/version'
@@ -5,7 +6,10 @@ require 'ruby_paypal_nvp/configuration'
 
 require 'ruby_paypal_nvp/utils/errors'
 
-require 'ruby_paypal_nvp/fetcher'
+require 'ruby_paypal_nvp/fetcher/base'
+require 'ruby_paypal_nvp/fetcher/statement'
+
+require 'ruby_paypal_nvp/model/statement'
 
 module RubyPaypalNvp
   def self.configuration

@@ -1,8 +1,9 @@
 module RubyPaypalNvp
   class Configuration
-    attr_writer :version, :user, :password, :signature, :subject
+    attr_writer :version, :user, :password, :signature, :subject, :api_url
 
     def initialize
+      Time.zone = 'Prague'
       @version = nil
       @user = nil
       @password = nil
@@ -11,7 +12,7 @@ module RubyPaypalNvp
     end
 
     def version
-      '204.0' unless @version
+      return '204.0' unless @version
       @version
     end
 
@@ -33,6 +34,11 @@ module RubyPaypalNvp
     def subject
       raise ConfigNotSet, 'subject' unless @subject
       @subject
+    end
+
+    def api_url
+      raise ConfigNotSet, 'api_url' unless @api_url
+      @api_url
     end
   end
 end
