@@ -10,17 +10,7 @@ module RubyPaypalNvp
       def process_loaded_data(result)
         start_date = Time.zone.parse(result[:meta]['start_date'])
         end_date = Time.zone.parse(result[:meta]['end_date'])
-        puts result.to_json
-        # statement = BankStatement.create(
-        #   bank_account_id: account.bank_account_id,
-        #   format: 'PAYPAL API',
-        #   date_from: start_date,
-        #   date_until: end_date,
-        #   generated_at: result[:meta]['timestamp'],
-        #   statement: "#{start_date.year}/#{start_date.yday}",
-        #   raw_statement: result.to_json,
-        #   new_modifier_id: 'uoladm'
-        # )
+        ::RubyPaypalNvp::Model::Statement.new(result)
       end
 
       def load_response

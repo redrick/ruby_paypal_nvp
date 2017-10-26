@@ -10,6 +10,7 @@ require 'ruby_paypal_nvp/fetcher/base'
 require 'ruby_paypal_nvp/fetcher/statement'
 
 require 'ruby_paypal_nvp/model/statement'
+require 'ruby_paypal_nvp/model/item'
 
 module RubyPaypalNvp
   def self.configuration

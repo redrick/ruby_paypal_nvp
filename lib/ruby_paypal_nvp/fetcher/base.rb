@@ -14,12 +14,12 @@ module RubyPaypalNvp
       end
 
       def call
-        begin
+        # begin
           result = load_response
           process_loaded_data(result)
-        rescue NoMethodError
-          raise "Error processing #{self.class} for #{@subject}"
-        end
+        # rescue NoMethodError
+        #   raise "Error processing #{self.class} for #{@subject}"
+        # end
       end
 
       def self.call(date, currency, subject = nil)
