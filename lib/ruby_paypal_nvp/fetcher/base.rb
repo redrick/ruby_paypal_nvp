@@ -17,6 +17,7 @@ module RubyPaypalNvp
         @end_date = opts.fetch(:date_to, Time.zone.now).end_of_day.utc.iso8601
         @currency = opts.fetch(:currency, 'CZK')
         @subject = opts[:subject] || RubyPaypalNvp.configuration.subject
+        @transaction_class = opts.fetch(:transaction_class, 'BalanceAffecting')
         @resulting_hash = default_hash
       end
 
@@ -34,7 +35,14 @@ module RubyPaypalNvp
       end
 
       def load_api_response(options)
-        res = Net::HTTP.post_form(URI(RubyPaypalNvp.configuration.api_url), options)
+        uri = URI(RubyPaypalNvp.configuration.api_url)
+        req = Net::HTTP::Post.new(uri)
+        req.set_form_data(options)
+        res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          http.open_timeout = 60000
+          http.read_timeout = 60000
+          http.request(req)
+        end
         pretty_json(res.body)
       end
 

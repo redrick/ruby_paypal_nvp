@@ -1,3 +1,5 @@
+require 'csv'
+
 module RubyPaypalNvp
   module Model
     class Statement
@@ -18,6 +20,23 @@ module RubyPaypalNvp
         @amount_sum = @items.sum(&:amount)
         @fee_amount_sum = @items.sum(&:fee_amount)
         @net_amount_sum = @items.sum(&:net_amount)
+      end
+
+      def generate_csv(filename = nil)
+        raise 'Missing filename/path' unless filename
+        ::CSV.open(filename, 'w') do |csv|
+          csv << ['HEADER']
+          csv << ['', 'timestamp', @timestamp]
+          csv << ['', 'start_date', @start_date]
+          csv << ['', 'end_date', @end_date]
+          csv << ['', 'subject', @subject]
+          csv << ['', 'currency_code', @currency_code]
+          csv << ['ITEMS']
+          csv << RubyPaypalNvp::Model::Item.attributes
+          @items.each do |item|
+            csv << item.to_csv
+          end
+        end
       end
     end
   end
