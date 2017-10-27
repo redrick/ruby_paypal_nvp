@@ -5,11 +5,18 @@
 module RubyPaypalNvp
   module Fetcher
     class Base
-      def initialize(date, currency, subject = nil)
-        @start_date = date.beginning_of_day.utc.iso8601
-        @end_date = date.end_of_day.utc.iso8601
-        @currency = currency
-        @subject = subject || RubyPaypalNvp.configuration.subject
+      ##
+      # Input options:
+      #   date_from
+      #   date_to
+      #   currency
+      #   subject
+      #
+      def initialize(opts)
+        @start_date = opts.fetch(:date_from, Time.zone.now).beginning_of_day.utc.iso8601
+        @end_date = opts.fetch(:date_to, Time.zone.now).end_of_day.utc.iso8601
+        @currency = opts.fetch(:currency, 'CZK')
+        @subject = opts[:subject] || RubyPaypalNvp.configuration.subject
         @resulting_hash = default_hash
       end
 
@@ -22,8 +29,8 @@ module RubyPaypalNvp
         # end
       end
 
-      def self.call(date, currency, subject = nil)
-        new(date, currency, subject).call
+      def self.call(options)
+        new(options).call
       end
 
       def load_api_response(options)

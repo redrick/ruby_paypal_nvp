@@ -12,6 +12,8 @@ require 'ruby_paypal_nvp/fetcher/statement'
 require 'ruby_paypal_nvp/model/statement'
 require 'ruby_paypal_nvp/model/item'
 
+require 'ruby_paypal_nvp/statement'
+
 module RubyPaypalNvp
   def self.configuration
     @configuration ||= Configuration.new
