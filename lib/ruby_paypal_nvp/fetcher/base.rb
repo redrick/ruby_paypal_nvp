@@ -78,7 +78,8 @@ module RubyPaypalNvp
           user: RubyPaypalNvp.configuration.user,
           pwd: RubyPaypalNvp.configuration.password,
           signature: RubyPaypalNvp.configuration.signature,
-          subject: @subject
+          subject: @subject,
+          currencycode: @currency
         }
       end
 
