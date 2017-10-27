@@ -21,12 +21,12 @@ module RubyPaypalNvp
       end
 
       def call
-        # begin
+        begin
           result = load_response
           process_loaded_data(result)
-        # rescue NoMethodError
-        #   raise "Error processing #{self.class} for #{@subject}"
-        # end
+        rescue NoMethodError
+          raise "Error processing #{self.class} for #{@subject}"
+        end
       end
 
       def self.call(options)
@@ -78,8 +78,7 @@ module RubyPaypalNvp
           user: RubyPaypalNvp.configuration.user,
           pwd: RubyPaypalNvp.configuration.password,
           signature: RubyPaypalNvp.configuration.signature,
-          subject: @subject,
-          currencycode: @currency
+          subject: @subject
         }
       end
 

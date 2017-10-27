@@ -48,7 +48,8 @@ module RubyPaypalNvp
         additional = {
           startdate: @start_date,
           enddate: options[:enddate] || @end_date,
-          transactionclass: 'BalanceAffecting'
+          transactionclass: 'BalanceAffecting',
+          currencycode: @currency
         }
         super.merge! additional
       end
