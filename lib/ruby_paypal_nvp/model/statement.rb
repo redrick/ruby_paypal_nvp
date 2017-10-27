@@ -31,6 +31,10 @@ module RubyPaypalNvp
           csv << ['', 'end_date', @end_date]
           csv << ['', 'subject', @subject]
           csv << ['', 'currency_code', @currency_code]
+          csv << ['', 'items_count', @items_count]
+          csv << ['', 'amount_sum', @amount_sum]
+          csv << ['', 'fee_amount_sum', @fee_amount_sum]
+          csv << ['', 'net_amount_sum', @net_amount_sum]
           csv << ['ITEMS']
           csv << RubyPaypalNvp::Model::Item.attributes
           @items.each do |item|
