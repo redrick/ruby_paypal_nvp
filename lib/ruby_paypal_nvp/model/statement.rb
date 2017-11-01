@@ -14,8 +14,8 @@ module RubyPaypalNvp
         @subject = result[:meta]['subject']
         @currency_code = result[:meta]['currency_code']
         @items = result[:values].map do |value|
-          Item.new(value)
-        end
+          Item.new(value) unless value['L_STATUS'] == 'Cleared'
+        end.compact.uniq { |i| i.transaction_id }
         @items_count = @items.count
         @amount_sum = @items.sum(&:amount)
         @fee_amount_sum = @items.sum(&:fee_amount)

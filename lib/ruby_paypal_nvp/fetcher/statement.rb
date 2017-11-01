@@ -16,7 +16,7 @@ module RubyPaypalNvp
       def load_response
         @ack = 'Failure'
         while @ack != 'Success'
-          enddate = moved_end ? (Time.parse(moved_end).utc - 1.second).iso8601 : nil
+          enddate = moved_end ? (Time.parse(moved_end).utc).iso8601 : nil
           options = request_options(enddate: enddate)
           response = load_api_response(options)
           parse(response, increment: increment)

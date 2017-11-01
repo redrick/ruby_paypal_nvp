@@ -11,6 +11,7 @@ module RubyPaypalNvp
       #   date_to
       #   currency
       #   subject
+      #   transaction_class
       #
       def initialize(opts)
         @start_date = opts.fetch(:date_from, Time.zone.now).beginning_of_day.utc.iso8601
@@ -38,9 +39,11 @@ module RubyPaypalNvp
         uri = URI(RubyPaypalNvp.configuration.api_url)
         req = Net::HTTP::Post.new(uri)
         req.set_form_data(options)
-        res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-          http.open_timeout = 60000
-          http.read_timeout = 60000
+        res = Net::HTTP.start(uri.hostname, uri.port,
+                              use_ssl: uri.scheme == 'https',
+                              verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
+          http.open_timeout = 6000
+          http.read_timeout = 6000
           http.request(req)
         end
         pretty_json(res.body)
