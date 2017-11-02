@@ -40,8 +40,7 @@ module RubyPaypalNvp
         req = Net::HTTP::Post.new(uri)
         req.set_form_data(options)
         res = Net::HTTP.start(uri.hostname, uri.port,
-                              use_ssl: uri.scheme == 'https',
-                              verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
+                              use_ssl: uri.scheme == 'https') do |http|
           http.open_timeout = 6000
           http.read_timeout = 6000
           http.request(req)
