@@ -20,6 +20,7 @@ module RubyPaypalNvp
         @amount_sum = @items.sum(&:amount)
         @fee_amount_sum = @items.sum(&:fee_amount)
         @net_amount_sum = @items.sum(&:net_amount)
+        @raw = result
       end
 
       def generate_csv(filename = nil)
@@ -41,6 +42,10 @@ module RubyPaypalNvp
             csv << item.to_csv
           end
         end
+      end
+
+      def to_json
+        @raw[:values].compact.uniq { |i| i['L_TRANSACTIONID'] }.to_json
       end
     end
   end
