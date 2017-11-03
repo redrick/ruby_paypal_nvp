@@ -169,7 +169,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## TODO
 
 Pending things that will be done shortly:
-- Provide JSON output!
 - Rspec
 
 ## License
