@@ -1,5 +1,8 @@
 require "bundler/setup"
 require "ruby_paypal_nvp"
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f  }
+
+require 'pry'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -10,5 +13,12 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  RubyPaypalNvp.configure do |config|
+    config.user = '1_api1.zakaznik.com'
+    config.password = 'KR55T5PGFZWK62BD'
+    config.signature = 'AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti'
+    config.api_url = 'https://api-3t.sandbox.paypal.com/nvp'
   end
 end
