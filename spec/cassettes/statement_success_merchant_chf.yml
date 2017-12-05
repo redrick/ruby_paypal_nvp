@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: method=TransactionSearch&version=204.0&user=1_api1.zakaznik.com&pwd=KR55T5PGFZWK62BD&signature=AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti&subject=2%40zakaznik.com&startdate=2016-12-31T23%3A00%3A00Z&enddate=2017-12-03T22%3A59%3A59Z&transactionclass=BalanceAffecting&currencycode=CHF
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-3t.sandbox.paypal.com
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 Dec 2017 08:44:00 GMT
+      Server:
+      - Apache
+      X-Slr-Retry-Api:
+      - TransactionSearch
+      X-Paypal-Operation-Name:
+      - TransactionSearch
+      X-Paypal-Api-Rc:
+      - ''
+      Connection:
+      - close
+      Http-X-Pp-Az-Locator:
+      - sandbox.slc
+      Paypal-Debug-Id:
+      - 2c26263995290
+      Set-Cookie:
+      - X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+      - X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dappdispatcher_apit%26TIME%3D1633429082%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc;
+        Expires=Tue, 05 Dec 2017 09:14:17 GMT; domain=.paypal.com; path=/; Secure;
+        HttpOnly
+      Content-Length:
+      - '109'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: TIMESTAMP=2017%2d12%2d05T08%3a44%3a17Z&CORRELATIONID=2c26263995290&ACK=Success&VERSION=204%2e0&BUILD=39206242
+    http_version:
+  recorded_at: Tue, 05 Dec 2017 08:44:18 GMT
+recorded_with: VCR 2.9.3

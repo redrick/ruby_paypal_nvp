@@ -7,6 +7,8 @@ module RubyPaypalNvp
         :currency_code, :items, :amount_sum, :fee_amount_sum, :net_amount_sum,
         :items_count
 
+      IGNORED_STATUSES = %w[Cleared Placed Removed]
+
       def initialize(result)
         @timestamp = result[:meta]['timestamp']
         @start_date = result[:meta]['start_date']
@@ -14,7 +16,7 @@ module RubyPaypalNvp
         @subject = result[:meta]['subject']
         @currency_code = result[:meta]['currency_code']
         @items = result[:values].map do |value|
-          Item.new(value) unless value['L_STATUS'] == 'Cleared'
+          Item.new(value) unless IGNORED_STATUSES.include?(value['L_STATUS'])
         end.compact.uniq { |i| i.transaction_id }
         @items_count = @items.count
         @amount_sum = @items.sum(&:amount)

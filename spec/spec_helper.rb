@@ -15,10 +15,10 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  RubyPaypalNvp.configure do |config|
-    config.user = '1_api1.zakaznik.com'
-    config.password = 'KR55T5PGFZWK62BD'
-    config.signature = 'AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti'
-    config.api_url = 'https://api-3t.sandbox.paypal.com/nvp'
+  RubyPaypalNvp.configure do |c|
+    c.user = '1_api1.zakaznik.com'
+    c.password = 'KR55T5PGFZWK62BD'
+    c.signature = 'AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti'
+    c.api_url = 'https://api-3t.sandbox.paypal.com/nvp'
   end
 end

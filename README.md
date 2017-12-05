@@ -25,7 +25,7 @@ This gem provides you with simple access to specific subject account statement.
   - Login on http://paypal.com/
   - Click Profile“ → „Profile and settings“
   - In the menu choose „My selling tools“ and then „API access“ and click on Update
-  - Choose the first option and click on „Add or edit API permissions“
+  - Choose the first option and click on „Grant API permission“
   - On the next page „Add a new third party“
   - In the new window fill in ID given to you (is the one from previous part) and click „Lookup“
   - When the ID was filled in correctly a new menu with permissions will appear („Available Permissions“).
