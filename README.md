@@ -156,6 +156,38 @@ result = RubyPaypalNvp::Statement.where(
 result.generate_csv('location_to_save.csv')
 ```
 
+Another thing provided is Balance fetching, where you can ask for balance of
+given account at point in time when asking it... you cannot really ask for
+balance at given point in time, because they simply do not provide it...
+
+For this purpose you have:
+
+```
+RubyPaypalNvp::Balance
+```
+
+it provides you again with simple `.where` method to ask for data:
+
+```
+result = RubyPaypalNvp::Balance
+  .where(subject: 'info@uol.cz', currency: 'CZK')
+```
+
+Where
+- `subject` is account email you are looking through (as per description in requirements)
+- `currency` is as name says currency of desired account (defaults to `CZK`)
+
+Result provides speak for itself:
+
+```
+#<RubyPaypalNvp::Model::Balance:0x007fd8f0a17f90
+  @currency_code="CZK",
+  @opening_balance=58221.0,
+  @subject="info@uol.cz",
+  @timestamp="2017-12-06 10:00:14 +0100">
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

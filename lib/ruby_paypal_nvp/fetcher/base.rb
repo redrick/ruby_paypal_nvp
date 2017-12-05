@@ -13,6 +13,7 @@ module RubyPaypalNvp
       #   subject
       #   transaction_class
       #
+      # rubocop:disable Metrics/AbcSize
       def initialize(opts)
         @start_date = opts.fetch(:date_from, Time.zone.now).beginning_of_day.utc.iso8601
         @end_date = opts.fetch(:date_to, Time.zone.now).end_of_day.utc.iso8601
@@ -21,14 +22,13 @@ module RubyPaypalNvp
         @transaction_class = opts.fetch(:transaction_class, 'BalanceAffecting')
         @resulting_hash = default_hash
       end
+      # rubocop:enable Metrics/AbcSize
 
       def call
-        begin
-          result = load_response
-          process_loaded_data(result)
-        rescue NoMethodError
-          raise "Error processing #{self.class} for #{@subject}"
-        end
+        result = load_response
+        process_loaded_data(result)
+      rescue NoMethodError
+        raise "Error processing #{self.class} for #{@subject}"
       end
 
       def self.call(options)
@@ -50,6 +50,8 @@ module RubyPaypalNvp
 
       private
 
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
       def parse(body, options = {})
         @resulting_hash[:values].tap do |parsed_response|
           param_type = self.class::RESPONSE_PARAMS.first
@@ -57,7 +59,8 @@ module RubyPaypalNvp
           all_for_params_type.each_with_index do |(key, value), index|
             real_index = index + options[:increment]
             parsed_response[real_index] ||= {}
-            parsed_response[real_index] = parsed_response[real_index].merge "#{param_type}" => value
+            parsed_response[real_index] = parsed_response[real_index]
+                                          .merge(param_type.to_s => value)
             key = key.gsub(param_type, '')
             self.class::RESPONSE_PARAMS.drop(1).each do |attribute_name|
               pair = { attribute_name => body["#{attribute_name}#{key}"] }
@@ -66,9 +69,11 @@ module RubyPaypalNvp
           end
         end
       end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       # Implement in each child to save/send data
-      def process_loaded_data(_account, _result)
+      def process_loaded_data(_result)
         true
       end
 
@@ -81,7 +86,7 @@ module RubyPaypalNvp
         @resulting_hash
       end
 
-      def request_options(options = {})
+      def request_options(_options = {})
         {
           method: api_method,
           version: RubyPaypalNvp.configuration.version,

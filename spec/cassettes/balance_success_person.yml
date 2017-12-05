@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: method=GetBalance&version=204.0&user=1_api1.zakaznik.com&pwd=KR55T5PGFZWK62BD&signature=AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti&subject=1%40zakaznik.com&returnallcurrencies=1
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-3t.sandbox.paypal.com
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 06 Dec 2017 09:00:14 GMT
+      Server:
+      - Apache
+      X-Slr-Retry-Api:
+      - GetBalance
+      X-Paypal-Operation-Name:
+      - GetBalance
+      X-Paypal-Api-Rc:
+      - ''
+      Connection:
+      - close
+      Http-X-Pp-Az-Locator:
+      - sandbox.slc
+      Paypal-Debug-Id:
+      - f94f237d8318b
+      Set-Cookie:
+      - X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+      - X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dappdispatcher_apit%26TIME%3D2662410074%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc;
+        Expires=Wed, 06 Dec 2017 09:30:14 GMT; domain=.paypal.com; path=/; Secure;
+        HttpOnly
+      Content-Length:
+      - '218'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: L_AMT0=1598%2e17&L_AMT1=58221%2e00&L_AMT2=0%2e00&L_CURRENCYCODE0=USD&L_CURRENCYCODE1=CZK&L_CURRENCYCODE2=EUR&TIMESTAMP=2017%2d12%2d06T09%3a00%3a14Z&CORRELATIONID=f94f237d8318b&ACK=Success&VERSION=204%2e0&BUILD=39206242
+    http_version: 
+  recorded_at: Wed, 06 Dec 2017 09:00:14 GMT
+recorded_with: VCR 2.9.3

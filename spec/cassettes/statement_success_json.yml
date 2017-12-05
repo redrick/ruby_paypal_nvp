@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: method=TransactionSearch&version=204.0&user=1_api1.zakaznik.com&pwd=KR55T5PGFZWK62BD&signature=AOh0tu.5JUQyG2Aao4MpntBA2sFjA3Ld6MpS.Qgj8BaRaLlQZaSOV6Ti&subject=1%40zakaznik.com&startdate=2016-12-31T23%3A00%3A00Z&enddate=2017-12-03T22%3A59%3A59Z&transactionclass=BalanceAffecting&currencycode=CZK
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-3t.sandbox.paypal.com
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 Dec 2017 09:49:33 GMT
+      Server:
+      - Apache
+      X-Slr-Retry-Api:
+      - TransactionSearch
+      X-Paypal-Operation-Name:
+      - TransactionSearch
+      X-Paypal-Api-Rc:
+      - ''
+      Connection:
+      - close
+      Http-X-Pp-Az-Locator:
+      - sandbox.slc
+      Paypal-Debug-Id:
+      - 4ceac83477f21
+      Set-Cookie:
+      - X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+      - X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dappdispatcher_apit%26TIME%3D2909480538%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc;
+        Expires=Tue, 05 Dec 2017 10:19:33 GMT; domain=.paypal.com; path=/; Secure;
+        HttpOnly
+      Content-Length:
+      - '661'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: L_TIMESTAMP0=2017%2d01%2d17T08%3a48%3a44Z&L_TIMESTAMP1=2017%2d01%2d17T08%3a48%3a15Z&L_TIMEZONE0=GMT&L_TIMEZONE1=GMT&L_TYPE0=Payment&L_TYPE1=Payment&L_EMAIL0=2%40zakaznik%2ecom&L_EMAIL1=2%40zakaznik%2ecom&L_NAME0=UOL%20ApiUser%27s%20Test%20Store&L_NAME1=UOL%20ApiUser%27s%20Test%20Store&L_TRANSACTIONID0=4G872000YA254271F&L_TRANSACTIONID1=8KM33168PJ5813642&L_STATUS0=Completed&L_STATUS1=Completed&L_AMT0=64000%2e00&L_AMT1=%2d1000%2e00&L_CURRENCYCODE0=CZK&L_CURRENCYCODE1=CZK&L_FEEAMT0=0%2e00&L_FEEAMT1=0%2e00&L_NETAMT0=64000%2e00&L_NETAMT1=%2d1000%2e00&TIMESTAMP=2017%2d12%2d05T09%3a49%3a33Z&CORRELATIONID=4ceac83477f21&ACK=Success&VERSION=204%2e0&BUILD=39206242
+    http_version: 
+  recorded_at: Tue, 05 Dec 2017 09:49:34 GMT
+recorded_with: VCR 2.9.3

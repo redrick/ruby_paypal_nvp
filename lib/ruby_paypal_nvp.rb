@@ -7,12 +7,15 @@ require 'ruby_paypal_nvp/configuration'
 require 'ruby_paypal_nvp/utils/errors'
 
 require 'ruby_paypal_nvp/fetcher/base'
+require 'ruby_paypal_nvp/fetcher/balance'
 require 'ruby_paypal_nvp/fetcher/statement'
 
 require 'ruby_paypal_nvp/model/statement'
+require 'ruby_paypal_nvp/model/balance'
 require 'ruby_paypal_nvp/model/item'
 
 require 'ruby_paypal_nvp/statement'
+require 'ruby_paypal_nvp/balance'
 
 module RubyPaypalNvp
   def self.configuration
